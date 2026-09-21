@@ -4,7 +4,7 @@ on:
   push:
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -15,12 +15,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-
-      - name: Run test
-        run: node test.js
-
-      - name: Install dependencies
-        run: npm install
 
       - name: Build
         run: echo "Build successful"
@@ -38,5 +32,5 @@ jobs:
         with:
           node-version: 22
 
-      - name: Test
+      - name: Run test
         run: node test.js
