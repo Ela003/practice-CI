@@ -1,1 +1,1 @@
-console.log("test the ci")
+throw new Error("Test failed");
