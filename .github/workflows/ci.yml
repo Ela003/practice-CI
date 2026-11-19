@@ -68,3 +68,24 @@ jobs:
         run: |
           vercel deploy --prebuilt --prod \
             --token="${{ secrets.VERCEL_TOKEN }}"
+
+  rollback:
+    runs-on: ubuntu-latest
+
+    env:
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+    steps:
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+
+      - name: Rollback Production
+        run: |
+          vercel rollback \
+            --token="${{ secrets.VERCEL_TOKEN }}"
+
+      - name: Check Rollback Status
+        run: |
+          vercel rollback status \
+            --token="${{ secrets.VERCEL_TOKEN }}"
